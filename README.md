@@ -1,6 +1,5 @@
-# Cancherks
-Sport installation system where students and employees can reserve any type of sport installation during the available times. 
-The administrators can manage the requests.
+# EmparejaTec
+Emparejatec is a project that aims to develop an app to meet other students within the Costa Rican Institute of Technology, both for dates and simply new friends. 
 
 Authors:
-Maynor Martínez and Fernanda Murillo.
+César Jiménez and Alison Barrantes
