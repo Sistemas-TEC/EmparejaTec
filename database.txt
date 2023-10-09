@@ -1,0 +1,104 @@
+Create the necessary ms sql queries for the database "EMPAREJATEC" for the following tables:
+
+# Gender
+PK	idGender
+	gender
+
+# UserStatus
+PK	idUserStatus
+	userStatus
+
+# AppUser
+PK	idAppUser
+	username
+	summary
+	age
+FK	idGender
+FK	idUserStatus
+	avatarPath
+	bannerPath
+
+# AttractedTo
+PK	idAttractedTo
+FK	idAppUser
+FK	idGender
+
+# RelationshipType
+PK	idRelationshipType
+FK	relationshipType
+
+# AppUserXRelationshipType
+PK	idAppUserXRelationshipType
+FK	idAppUser
+FK	idRelationshipType
+
+# RequestStatus
+PK	idRequestStatus
+	requestStatus
+
+# Request
+PK	idRequest
+FK	idRequestStatus
+FK	idSender
+FK	idReceiver
+	date
+	time
+
+# ChatStatus
+PK	idChatStatus
+	chatStatus
+
+# Chat
+PK	idChat
+FK	idRequest
+FK	idChatStatus
+	startDateChat
+	isMediaActivated
+
+# Message
+PK	idMessage
+FK	idChat
+FK	idSender
+FK	idReceiver
+	textContent
+	date
+	time
+
+# ContentType
+PK	idContentType
+	contentType
+
+# MediaContent
+PK	idMediaContent
+FK	idContentType
+	mediaPath
+
+# ChatCategory
+PK	idChatCategory
+	chatCategory
+
+# ChatCategoryPerUser
+PK	idChatCategoryPerUser
+FK	idChatCategory
+FK	idUser
+FK	idChat
+
+# Administrator
+PK	idAdministrator
+	email
+	pass
+
+# ReportReason
+PK	idReportReason
+	reportReason
+
+# Report
+PK	idReport
+FK	idReportedUser
+FK	idUserReporting
+FK	idChat
+FK	idReportReason
+FK	idReportStatus
+FK	idAdministrator
+	date
+	notes
