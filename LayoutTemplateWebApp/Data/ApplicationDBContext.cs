@@ -1,15 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LayoutTemplateWebApp.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace LayoutTemplateWebApp.Data
 {
 
     public class ApplicationDBContext : DbContext
     {
-        public ApplicationDBContext()
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
             
         }
 
-        public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<Student> Student { get; set; }
     }
 }

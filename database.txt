@@ -8,11 +8,17 @@ PK	idGender
 PK	idUserStatus
 	userStatus
 
+# Student
+PK	email
+	studentId
+	pass
+
 # AppUser
 PK	idAppUser
 	username
 	summary
 	age
+FK	email
 FK	idGender
 FK	idUserStatus
 	avatarPath

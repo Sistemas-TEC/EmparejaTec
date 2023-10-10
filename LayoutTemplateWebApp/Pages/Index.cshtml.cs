@@ -1,20 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LayoutTemplateWebApp.Data;
+using LayoutTemplateWebApp.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LayoutTemplateWebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ApplicationDBContext _db;
+        public Student Student { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ApplicationDBContext db)
         {
-            _logger = logger;
+            _db = db;
         }
 
         public void OnGet()
         {
-
+            Student = _db.Student.Find("thecsarbeat@estudiantec.cr");
         }
     }
 }
