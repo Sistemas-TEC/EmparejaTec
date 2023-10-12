@@ -1,6 +1,6 @@
 
 :root {
-    --colorMain: #00A38B;
+    --colorMain: #6E3EFF;
     --colorMainRGB: 120, 0, 255;
     --colorMainTrans: #F1F1F1; /*border color*/
     --greyFooter: #F1F1F1;
@@ -31,6 +31,7 @@
     --font-primary: 'Roboto', sans-serif;
     --navMaxHeight: 100px;
     --footerMaxHeigth: 50px;
+    --sidebarWidth: 238px;
 }
 
 
