@@ -1,7 +1,7 @@
 
 :root {
     --colorMain: #6E3EFF;
-    --colorMainRGB: 120, 0, 255;
+    --colorMainRGB: 110, 62, 255;
     --colorMainTrans: #F1F1F1; /*border color*/
     --greyFooter: #F1F1F1;
     --whiteContranst: #F6F6F6;
@@ -31,7 +31,7 @@
     --font-primary: 'Roboto', sans-serif;
     --navMaxHeight: 100px;
     --footerMaxHeigth: 50px;
-    --sidebarWidth: 238px;
+    --sidebarWidth: 250px;
 }
 
 
@@ -62,6 +62,10 @@ body {
 img {
     max-width: 100%;
     max-height: 100%;
+}
+
+a:hover{
+    color: var(--colorMain) !important;
 }
 
 
@@ -101,22 +105,33 @@ img {
 }
 
 /* Header text format */
-.nav-link {
+.nav-link-header {
     color: var(--textGrey) !important; /* This important would be unnecessary, but if we remove doesn't work, Why ? I don't know but I don't care*/
     font-weight: lighter;
     border-radius: 5px 5px 5px 5px;
 }
-.nav-item {
+.nav-item-header {
     margin: 5px 20px;
 }
 
 .active {
-    font-weight: bold;
-    background-color: #cfbdff;
+    font-weight: 600;
+    color: var(--colorMain) !important;
 }
 
-.nav-link:hover {
-    font-weight: bold;
+.nav-pill{
+    color: var(--colorMain) !important;
+}
+
+.active-tab {
+    font-weight: 600;
+    color: white !important;
+    background-color: var(--colorMain) !important;
+}
+
+.nav-link-header:hover {
+    font-weight: 600;
+    color: var(--colorMain) !important;
 }
 
 /* Footer format */
@@ -129,3 +144,23 @@ img {
         text-align: center;
         font-weight: lighter;
     }
+
+/* Chats */
+
+.last-message {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.chat-content {
+    flex: 1;
+    overflow: hidden;
+    min-width: 130px;
+}
+
+.profile-pic img {
+    max-width: 32px;
+    max-height: 32px;
+}

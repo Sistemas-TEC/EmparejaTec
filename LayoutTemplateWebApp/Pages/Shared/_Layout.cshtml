@@ -30,14 +30,14 @@
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Inicio</a>
+                        <li class="nav-item nav-item-header">
+                            <a class="nav-link nav-link-header @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Option1">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Editar Perfil</a>
+                        <li class="nav-item nav-item-header">
+                            <a class="nav-link nav-link-header @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Editar Perfil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Option3</a>
+                        <li class="nav-item nav-item-header">
+                            <a class="nav-link nav-link-header @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Option3</a>
                         </li>
                     </ul>
                 </div>
@@ -54,17 +54,36 @@
 
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
-            <ul class="d-flex flex-column gap-3 px-0 py-2">
-                <li class="py-2 inline-nav-item ">
-                    <i class="bi bi-people-fill"></i>
-                    Instalaciones
+            <div class="container">
+                <div class="row mb-3">
+                    <a class="list-group-item text-center" href="#">
+                            Solicitudes <span class="badge bg-colorMain">5</span>
+                        </a>
+                </div>
+            </div>
+            <ul class="nav nav-pills d-flex justify-content-center align-items-center m-2">
+                <li class="nav-item">
+                    <a class="nav-link nav-pill active-tab" aria-current="page" href="#">Romance</a>
                 </li>
-                <li class="py-2 bg-footer inline-nav-item-nd">
-                    <i class="bi bi-people-fill"></i>
-                    Instalaciones
+                <li class="nav-item">
+                    <a class="nav-link nav-pill" href="#">Amistad</a>
                 </li>
             </ul>
-           
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="profile-pic">
+                        <img src="~/img/profile_pics/boy.png" alt="Profile Picture" class="img-fluid rounded-circle" width="32">
+                    </div>
+                    <div class="chat-content m-1">
+                        <h6 class="mb-1">John Doe</h6>
+                        <p class="mb-1 last-message">Nombres que pereza, ya no voy a hacer nada</p>
+                    </div>
+                    <div class="chat-details text-right">
+                        <small>6:10pm</small>
+                        <span class="badge bg-colorMain">3</span>
+                    </div>
+                </li>
+            </ul>
         </aside>
         <div class="content-page w-100">
             <main role="main" class="pb-3 m-3">
