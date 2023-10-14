@@ -1,6 +1,5 @@
 ﻿using LayoutTemplateWebApp.Data;
 using LayoutTemplateWebApp.Model;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LayoutTemplateWebApp.Pages

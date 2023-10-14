@@ -8,7 +8,7 @@ namespace LayoutTemplateWebApp.Data
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<Student> Student { get; set; }
