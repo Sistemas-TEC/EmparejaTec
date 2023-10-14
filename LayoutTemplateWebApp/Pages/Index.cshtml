@@ -4,6 +4,10 @@
     ViewData["Title"] = "Home page";
 }
 <!-- Write your comments here -->
+
+
+    <!---Create a card to display Student information</>-->
+
 <div class="card">
         <div class="card-header">
             <h3>Student Information</h3>
@@ -11,7 +15,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="~/images/Student.png" class="img-thumbnail" />
+                    <img src="~/images/profile_pic/boy.png" class="img-thumbnail" width="200" style="margin: 10px;" />
                 </div>
                 <div class="col-md-8">
                     <h4>@Model.Student.email</h4>
@@ -20,4 +24,5 @@
                 </div>
             </div>
         </div>
+    <script>public string SelectedImage { get; set; }</script>
 </div>

@@ -2,6 +2,7 @@
 using LayoutTemplateWebApp.Model;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
 namespace LayoutTemplateWebApp.Pages
 {
     public class IndexModel : PageModel
@@ -13,10 +14,10 @@ namespace LayoutTemplateWebApp.Pages
         {
             _db = db;
         }
-
         public void OnGet()
         {
             Student = _db.Student.Find("thecsarbeat@estudiantec.cr");
         }
+        public string SelectedImage { get; set; }
     }
 }
