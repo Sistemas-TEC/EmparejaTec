@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
+
 
 namespace LayoutTemplateWebApp.Pages
 {
@@ -17,11 +19,21 @@ namespace LayoutTemplateWebApp.Pages
         public ErrorModel(ILogger<ErrorModel> logger)
         {
             _logger = logger;
-        }
+        }   
 
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
+
+    public class Option2Model : PageModel
+    {
+        [BindProperty]
+        public string SelectedImage { get; set; } = "default.png"; // Imagen por defecto
+
+        
+
+    }
+
 }

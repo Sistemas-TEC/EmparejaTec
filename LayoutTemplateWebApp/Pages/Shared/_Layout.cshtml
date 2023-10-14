@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model LayoutTemplateWebApp.Pages.IndexModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,24 +38,35 @@
                         <li class="nav-item nav-item-header">
                             <a class="nav-link nav-link-header @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Option2">Editar Perfil</a>
                         </li>
+<<<<<<< Updated upstream
                         <li class="nav-item nav-item-header">
                             <a class="nav-link nav-link-header @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Option3</a>
+=======
+                        <li class="nav-item">
+                            <a class="nav-link @(option3IsActive ? "active" : "")" asp-area="" asp-page="/Option3">Política de Privacidad</a>
+>>>>>>> Stashed changes
                         </li>
                     </ul>
                 </div>
-                <div class="icon-Profile bg-footer text-center align-middle fs-3 text-white">
-                    <i class="bi bi-person"></i>
+                <div class="profileImage bg-footer text-center align-middle fs-3 text-white">
+                    <i class="profileImage"></i>
+                </div>
+                <!-- Header -->
+                <div class="header">
+                    <a href="/Option2">
+                        <img src="~/images/@Model.SelectedImage" id="profileImageHeader" width="90" style="margin: 80px;" />
+                    </a>
                 </div>
 
+                </div>
 
-
-            </div>
         </nav>
     </header>
        
 
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
+<<<<<<< Updated upstream
             <div class="container">
                 <div class="row mb-3">
                     <a class="list-group-item text-center" href="#">
@@ -82,6 +95,16 @@
                         <small>6:10pm</small>
                         <span class="badge bg-colorMain">3</span>
                     </div>
+=======
+            <ul class="d-flex flex-column gap-3 px-0 py-2">
+                <li class="py-2 inline-nav-item ">
+                    <i class="bi bi-people-fill"></i>
+                    Mensajes
+                </li>
+                <li class="py-2 bg-footer inline-nav-item-nd">
+                    <i class="bi bi-people-fill"></i>
+                    Solicitudes de amistad
+>>>>>>> Stashed changes
                 </li>
             </ul>
         </aside>
@@ -94,7 +117,7 @@
 
     <footer class="border-top footer text-muted ">
         <div class="container">
-            Correo: example@itcr.ac.cr Teléfono: 2020-2020 
+            EmparejaTec©2023
         </div>
     </footer>
 
