@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LayoutTemplateWebApp.Pages
+namespace EmparejaTecWebApp.Pages
 {
-    public class Option1Model : PageModel
+    public class RegistroUsuarioModel : PageModel
     {
         public void OnGet()
         {

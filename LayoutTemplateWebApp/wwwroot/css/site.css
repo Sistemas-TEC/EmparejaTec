@@ -119,7 +119,7 @@ a:hover{
     color: var(--colorMain) !important;
 }
 
-.nav-pill{
+.nav-link {
     color: var(--colorMain) !important;
 }
 
@@ -127,6 +127,10 @@ a:hover{
     font-weight: 600;
     color: white !important;
     background-color: var(--colorMain) !important;
+}
+
+.active-tab:hover {
+    color: white !important;
 }
 
 .nav-link-header:hover {
@@ -163,4 +167,38 @@ a:hover{
 .profile-pic img {
     max-width: 32px;
     max-height: 32px;
+}
+
+/* Buttons */
+
+.btn-primary{
+    background-color: var(--colorMain) !important;
+    border-color: var(--colorMain) !important;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    border-color: var(--colorMain) !important;
+    color: var(--colorMain) !important;
+}
+
+.btn-outline-primary:hover{
+    background-color: var(--colorMain) !important;
+    border-color: var(--colorMain) !important;
+    color: white !important;
+}
+
+/* Register Form */
+.register-form{
+    width: 400px;
+    margin-top: 500px;
+    padding-bottom: 100px
+}
+
+textarea{
+    resize: none;
+}
+
+.icon-form{
+    font-size: 75px;
 }
