@@ -150,6 +150,9 @@ a:hover{
     }
 
 /* Chats */
+.chat:hover{
+    background-color: whitesmoke;
+}
 
 .last-message {
     white-space: nowrap;
@@ -167,6 +170,10 @@ a:hover{
 .profile-pic img {
     max-width: 32px;
     max-height: 32px;
+}
+
+.notification{
+    color: white !important;
 }
 
 /* Buttons */
