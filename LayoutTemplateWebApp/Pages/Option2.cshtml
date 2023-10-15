@@ -1,9 +1,32 @@
 ﻿@page
 @model LayoutTemplateWebApp.Pages.IndexModel
-@{
 
-    ViewData["Title"] = "Editar perfil";
+@section Option2Sidebar {
+    <div class="container">
+        <h3>Editar Perfil</h3>
+        <p>Este es el contenido específico para la página Option2.cshtml.</p>
+        <!-- Puedes agregar más contenido específico aquí según tus necesidades -->
+    </div>
 }
+<!-- INICIO DEL CARD -->
+<div class="card border-light w-75 mx-auto position-relative">
+    <img src="~/images/banner_pic/banner5.png" class="card-img-top" alt="..." width="100px" height="500px">
+    <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
+        <!-- Foto de perfil -->
+        <img src="~/images/profile_pic/boy.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="200" height="250">
+    </div>
+    <div class="card-body">
+        <h1 class="card-title">samurai99</h1>
+        <br>
+        <p class="card-text">Soy una persona apasionada por la aventura y la exploración. Mis fines de semana suelen estar llenos de actividades al aire libre, desde hacer senderismo en las montañas hasta explorar nuevos senderos en mi bicicleta de montaña. Me encanta la naturaleza y disfruto de las escapadas de camping para desconectar de la rutina diaria. Además de mi amor por la aventura, soy un apasionado de la música indie y la gastronomía internacional.🥗🍣</p>
+        <p class="card-text"><small class="text-muted"></small></p>
+        <div class="d-flex justify-content-center">
+        </div>
+    </div>
+</div>
+<!-- FIN DEL CARD -->
+
+
 <br>
 <h1 style="text-align: center;"> @ViewData["Title"]</h1>
 <br>
@@ -41,7 +64,7 @@
 <script>
     function updateSelectedImage() {
         var selectedImage = document.getElementById("imageSelector").value;
-        document.getElementById("selectedImage").src = "~/images/" + selectedImage;
+        document.getElementById("selectedImage").src = "~/images/profile_pic/boy.png" + selectedImage;
     }
 
     document.getElementById("imageSelector").addEventListener("change", updateSelectedImage);
@@ -50,12 +73,12 @@
     public class Option2Model : PageModel
     {
         [BindProperty]
-        public string SelectedImage { get; set; } = "default.png"; // Imagen por defecto
+                public string SelectedImage { get; set; } = "~/images/profile_pic/boy.png"; // Imagen por defecto
 
         [BindProperty]
-        public IFormFile ProfileImageFile { get; set; }
+                public IFormFile ProfileImageFile { get; set; }
 
-        public IActionResult OnPost()
+                public IActionResult OnPost()
         {
             if (ProfileImageFile != null && ProfileImageFile.Length > 0) {
                 var fileName = "user_uploaded_" + DateTime.Now.Ticks + "_" + ProfileImageFile.FileName;
@@ -71,7 +94,8 @@
 
         return RedirectToPage("/Option2");
     }
-    }
+            }
+
 
 </script>
 
