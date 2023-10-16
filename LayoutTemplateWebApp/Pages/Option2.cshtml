@@ -1,8 +1,6 @@
 ﻿@page
 @model LayoutTemplateWebApp.Pages.IndexModel
 @{
-
-<<<<<<< Updated upstream
     ViewData["Title"] = "Editar perfil";
 }
 <br>
@@ -51,12 +49,12 @@
     public class Option2Model : PageModel
     {
         [BindProperty]
-        public string SelectedImage { get; set; } = "default.png"; // Imagen por defecto
+                    public string SelectedImage { get; set; } = "default.png"; // Imagen por defecto
 
         [BindProperty]
-        public IFormFile ProfileImageFile { get; set; }
+                    public IFormFile ProfileImageFile { get; set; }
 
-        public IActionResult OnPost()
+                    public IActionResult OnPost()
         {
             if (ProfileImageFile != null && ProfileImageFile.Length > 0) {
                 var fileName = "user_uploaded_" + DateTime.Now.Ticks + "_" + ProfileImageFile.FileName;
@@ -72,12 +70,10 @@
 
         return RedirectToPage("/Option2");
     }
-    }
+                }
 
 </script>
 
-
-=======
 @section Option2Sidebar {
     <div class="container">
         <h2 style="font-weight: normal  ">Editar Perfil</h2>
@@ -103,5 +99,3 @@
     </div>
 </div>
 <!-- FIN DEL CARD -->
-<!-- INICIO DEL CARD -->
->>>>>>> Stashed changes
