@@ -102,8 +102,6 @@ namespace EmparejaTecWebApp.Pages
                 HttpContext.Session.SetString("avatarPath", AppUser.avatarPath.ToString());
                 Response.Redirect("/Usuario");
             }
-
-
         }
 
     }

@@ -1,78 +1,24 @@
-﻿@page
+@page
 @model EmparejaTecWebApp.Pages.IndexModel
 @{
 
     ViewData["Title"] = "Editar perfil";
 }
-<br>
-<h1 style="text-align: center;"> @ViewData["Title"]</h1>
-<br>
-<!--
-<form method="post" enctype="multipart/form-data">
-    <label for="imageSelector">Selecciona una imagen de perfil:</label>
-    <select id="imageSelector" asp-for="SelectedImage">
-        <option value="boy.png">Boy</option>
-        <option value="girl.png">Girl</option>
-        <option value="rex.png">Rex</option>
-        <option value="cow.png">Cow</option>
-        <option value="penguin.png">Penguin</option>
-        <option value="zebra.png">Zebra</option>
-        <option value="wolf.png">Wolf</option>
-        <option value="Viking.png">Viking</option>
-        <option value="turtle.png">Turtle</option>
-        <option value="triceraptops.png">Triceraptops</option>
-        <option value="sloth.png">Sloth</option>
-        <option value="shark.png">Shark</option>
-        <option value="lion.png">Lion</option>
-        <option value="hacker.png">Hacker</option>
-        <option value="devil.png">Devil</option>
-        <option value="elephant.png">Elephant</option>
-        <option value="frankenstein.png">Frankenstein</option>
-    </select>
 
-    <div id="selectedImageContainer">
-        <img id="selectedImage" width="100" />
+<!-- INICIO DEL CARD -->
+<div class="card border-light w-75 mx-auto position-relative">
+    <img src="~/images/banner_pic/banner5.png" class="card-img-top" alt="..." width="100px" height="500px">
+    <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
+        <!-- Foto de perfil -->
+        <img src="~/images/profile_pic/boy.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="200" height="250">
     </div>
-
-    <button type="submit">Guardar</button>
-</form>
--->
-<!--
-<script>
-    function updateSelectedImage() {
-        var selectedImage = document.getElementById("imageSelector").value;
-        document.getElementById("selectedImage").src = "~/images/" + selectedImage;
-    }
-
-    document.getElementById("imageSelector").addEventListener("change", updateSelectedImage);
-    updateSelectedImage(); // Llama a la función inicialmente para mostrar la imagen actualmente seleccionada
-
-    public class Option2Model : PageModel
-    {
-        [BindProperty]
-        public string SelectedImage { get; set; } = "default.png"; // Imagen por defecto
-
-        [BindProperty]
-        public IFormFile ProfileImageFile { get; set; }
-
-        public IActionResult OnPost()
-        {
-            if (ProfileImageFile != null && ProfileImageFile.Length > 0) {
-                var fileName = "user_uploaded_" + DateTime.Now.Ticks + "_" + ProfileImageFile.FileName;
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
-
-                using(var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        ProfileImageFile.CopyTo(stream);
-            }
-
-            SelectedImage = fileName;
-        }
-
-        return RedirectToPage("/Option2");
-    }
-    }
-
-</script>
--->
-
+    <div class="card-body">
+        <h1 class="card-title">samurai99</h1>
+        <br>
+        <p class="card-text">Soy una persona apasionada por la aventura y la exploración. Mis fines de semana suelen estar llenos de actividades al aire libre, desde hacer senderismo en las montañas hasta explorar nuevos senderos en mi bicicleta de montaña. Me encanta la naturaleza y disfruto de las escapadas de camping para desconectar de la rutina diaria. Además de mi amor por la aventura, soy un apasionado de la música indie y la gastronomía internacional.🥗🍣</p>
+        <p class="card-text"><small class="text-muted"></small></p>
+        <div class="d-flex justify-content-center">
+        </div>
+    </div>
+</div>
+<!-- FIN DEL CARD -->
