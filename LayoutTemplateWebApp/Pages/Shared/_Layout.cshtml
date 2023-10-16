@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="~/EmparejaTecWebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
             <div class="container-fluid align-middle">
@@ -47,7 +46,7 @@
                 <!-- Header -->
                 <div class="header">
                     <a href="/Option2">
-                        <img src="~/images/profile_pic/boy.png" id="profileImageHeader" width="90" style="margin: 80px;" />
+                        <img src="~/images/@Model.SelectedImage" id="profileImageHeader" width="90" style="margin: 80px;" />
                     </a>
                 </div>
             </div>
@@ -73,7 +72,6 @@
                     <a class="nav-link" href="#">Amistad</a>
                 </li>
             </ul>
-
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center clickable chat">
                     <div class="profile-pic">
@@ -89,12 +87,6 @@
                     </div>
                 </li>
             </ul>
-
-            @if (IsSectionDefined("Option2Sidebar"))
-            {
-                @RenderSection("Option2Sidebar")
-            }
-
         </aside>
         <div class="content-page w-100">
             <main role="main" class="pb-3 m-3">
@@ -102,6 +94,7 @@
             </main>
         </div>
     </div>
+
 
     <footer class="border-top footer text-muted ">
         <div class="container">
