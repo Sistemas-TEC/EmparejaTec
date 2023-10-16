@@ -43,6 +43,7 @@
                 <div class="profileImage bg-footer text-center align-middle fs-3 text-white">
                     <i class="profileImage"></i>
                 </div>
+
                 <!-- Header -->
                 <div class="header">
                     <a href="/Option2">
@@ -54,16 +55,107 @@
         </nav>
     </header>
 
+    <style>
+        .request-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
 
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .username-container {
+            flex-grow: 1;
+            /* Esto hará que el contenedor del nombre de usuario ocupe el espacio disponible */
+        }
+
+        .button-and-name-container {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espacio entre el nombre y los botones */
+        }
+    </style>
+
+    <!--AQUI COMIENZA EL SIDE BAR-->
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
             <div class="container">
                 <div class="row mb-3">
+<<<<<<< Updated upstream
                     <a class="list-group-item text-center" href="#">
                         Solicitudes <span class="badge bg-colorMain notification">5</span>
+=======
+                    <!-- Enlace para abrir el modal -->
+                    <a href="#exampleModal" data-bs-toggle="modal" class="list-group-item text-center">
+                        Solicitudes <span class="badge bg-colorMain">5</span>
+>>>>>>> Stashed changes
                     </a>
+                    <!-- Agrega el código del modal fuera del enlace -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Solicitudes de amistad</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Contenido del modal -->
+                                    <!--lista de solicitudes de amistad -->
+                                    <div class="friend-request" id="request1">
+                                        <div class="request-item">
+                                            <img src="~/images/profile_pic/elephant.png" alt="Perfil 1" class="img-fluid rounded-circle" width="70">
+                                            <span class="friend-name">ElenaFante</span>
+                                            <button class="btn btn-success" onclick="acceptRequest('request1')">Aceptar</button>
+                                            <button class="btn btn-danger" onclick="rejectRequest('request1')">Rechazar</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="friend-request" id="request2">
+                                        <div class="request-item">
+                                            <img src="~/images/profile_pic/girl.png" alt="Perfil 2" class="img-fluid rounded-circle" width="70">
+                                            <span class="friend-name">Arigameplay</span>
+                                            <button class="btn btn-success" onclick="acceptRequest('request2')">Aceptar</button>
+                                            <button class="btn btn-danger" onclick="rejectRequest('request2')">Rechazar</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="friend-request" id="request3">
+                                        <div class="request-item">
+                                            <img src="~/images/profile_pic/lion.png" alt="Perfil 3" class="img-fluid rounded-circle" width="70">
+                                            <span class="friend-name">roartuleon65</span>
+                                            <button class="btn btn-success" onclick="acceptRequest('request3')">Aceptar</button>
+                                            <button class="btn btn-danger" onclick="rejectRequest('request3')">Rechazar</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="friend-request" id="request4">
+                                        <div class="request-item">
+                                            <img src="~/images/profile_pic/viking.png" alt="Perfil 4" class="img-fluid rounded-circle" width="70">
+                                            <span class="friend-name">norugaBlack55</span>
+                                            <button class="btn btn-success" onclick="acceptRequest('request4')">Aceptar</button>
+                                            <button class="btn btn-danger" onclick="rejectRequest('request4')">Rechazar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
             <ul class="nav nav-pills d-flex justify-content-center align-items-center m-2">
                 <li class="nav-item">
                     <a class="nav-link active-tab" aria-current="page" href="#">Romance</a>
@@ -73,7 +165,12 @@
                 </li>
             </ul>
             <ul class="list-group">
+<<<<<<< Updated upstream
                 <li class="list-group-item d-flex justify-content-between align-items-center clickable chat">
+=======
+                <a href="~/Messages">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+>>>>>>> Stashed changes
                     <div class="profile-pic">
                         <img src="~/images/profile_pic/boy.png" alt="Profile Picture" class="img-fluid rounded-circle" width="32">
                     </div>
@@ -86,6 +183,7 @@
                         <span class="badge bg-colorMain notification">3</span>
                     </div>
                 </li>
+                </a>
             </ul>
         </aside>
         <div class="content-page w-100">
@@ -94,6 +192,7 @@
             </main>
         </div>
     </div>
+    <!--AQUI TERMINA EL SIDE BAR-->
 
 
     <footer class="border-top footer text-muted ">
@@ -102,9 +201,24 @@
         </div>
     </footer>
 
+    <script>
+        function acceptRequest(requestId) {
+            // Lógica para aceptar la solicitud
+            // Oculta la solicitud después de aceptar
+            document.getElementById(requestId).style.display = "none";
+        }
+
+        function rejectRequest(requestId) {
+            // Lógica para rechazar la solicitud
+            // Oculta la solicitud después de rechazar
+            document.getElementById(requestId).style.display = "none";
+        }
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iKt18ZzQZl3/JMr59u+ZlZA2T9n6K/HJQCKr59bN6EGGoFi1B/ljED" crossorigin="anonymous">
 
 
     @await RenderSectionAsync("Scripts", required: false)
