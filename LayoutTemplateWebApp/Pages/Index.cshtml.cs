@@ -10,13 +10,13 @@ namespace LayoutTemplateWebApp.Pages
         private readonly ApplicationDBContext _db;
         public Student Student { get; set; }
 
-        public IndexModel(ApplicationDBContext db)
+        public IndexModel(/*ApplicationDBContext db*/)
         {
-            _db = db;
+            //_db = db;
         }
         public void OnGet()
         {
-            Student = _db.Student.Find("thecsarbeat@estudiantec.cr");
+            //Student = _db.Student.Find("thecsarbeat@estudiantec.cr");
         }
         public string SelectedImage { get; set; }
     }
