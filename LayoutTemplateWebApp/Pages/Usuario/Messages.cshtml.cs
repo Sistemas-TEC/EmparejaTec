@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LayoutTemplateWebApp.Pages
+namespace EmparejaTecWebApp.Pages.Usuario
 {
-    public class ProfileModel : PageModel
+    public class MessagesModel : PageModel
     {
         public void OnGet()
         {

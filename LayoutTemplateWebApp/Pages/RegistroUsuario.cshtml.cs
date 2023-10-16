@@ -20,7 +20,7 @@ namespace EmparejaTecWebApp.Pages
         public void OnGet()
         {
             Interests = _db.Interest.ToList();
-            AppUser.email = HttpContext.Session.GetString("email");
+            //AppUser.email = HttpContext.Session.GetString("email");
         }
     }
 }

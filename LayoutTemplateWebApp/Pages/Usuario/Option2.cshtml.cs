@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EmparejaTecWebApp.Pages
+
+namespace EmparejaTecWebApp.Pages.Usuario
 {
-    public class MessagesModel : PageModel
+
+    public class Option2Model : PageModel
     {
         public void OnGet()
         {
         }
     }
+
 }
