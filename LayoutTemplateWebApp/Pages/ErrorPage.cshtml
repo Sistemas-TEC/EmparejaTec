@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@page
+@model EmparejaTecWebApp.Pages.ErrorPageModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,13 +16,14 @@
     <link rel="stylesheet" href="~/EmparejaTecWebApp.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <div>
-        <!--Boton aceptar bootstrap5-->
-        @RenderBody()
+    <div style="text-align:center; margin-top:50px;">
+        <h1 style="color:red;">Oops! Something went wrong.</h1>
+        <p style="font-size:20px;">We are sorry for the inconvenience. Please try again later.</p>
+        <a href="/">Return to Home</a>
     </div>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
+
