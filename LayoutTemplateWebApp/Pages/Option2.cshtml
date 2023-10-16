@@ -1,5 +1,5 @@
 ﻿@page
-@model LayoutTemplateWebApp.Pages.IndexModel
+@model EmparejaTecWebApp.Pages.IndexModel
 @{
 
     ViewData["Title"] = "Editar perfil";
@@ -7,7 +7,7 @@
 <br>
 <h1 style="text-align: center;"> @ViewData["Title"]</h1>
 <br>
-
+<!--
 <form method="post" enctype="multipart/form-data">
     <label for="imageSelector">Selecciona una imagen de perfil:</label>
     <select id="imageSelector" asp-for="SelectedImage">
@@ -30,14 +30,14 @@
         <option value="frankenstein.png">Frankenstein</option>
     </select>
 
-    <!-- Div para mostrar la imagen seleccionada -->
     <div id="selectedImageContainer">
         <img id="selectedImage" width="100" />
     </div>
 
     <button type="submit">Guardar</button>
 </form>
-
+-->
+<!--
 <script>
     function updateSelectedImage() {
         var selectedImage = document.getElementById("imageSelector").value;
@@ -74,5 +74,5 @@
     }
 
 </script>
-
+-->
 

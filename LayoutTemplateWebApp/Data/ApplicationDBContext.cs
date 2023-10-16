@@ -1,7 +1,7 @@
-﻿using LayoutTemplateWebApp.Model;
+﻿using EmparejaTecWebApp.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace LayoutTemplateWebApp.Data
+namespace EmparejaTecWebApp.Data
 {
 
     public class ApplicationDBContext : DbContext
@@ -11,6 +11,8 @@ namespace LayoutTemplateWebApp.Data
 
         }
 
-        public DbSet<Student> Student { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
+
+        public DbSet<Interest> Interest { get; set; }
     }
 }

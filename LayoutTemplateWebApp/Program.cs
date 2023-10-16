@@ -1,13 +1,21 @@
-using LayoutTemplateWebApp.Data;
+using EmparejaTecWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+
+
+builder.Services.AddHttpClient(); // Register HttpClient
+
+builder.Services.AddSession(); // Add session services
+builder.Services.AddMemoryCache(); // Add memory cache services
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,6 +26,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession(); // Use session
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

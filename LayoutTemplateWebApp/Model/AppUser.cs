@@ -1,12 +1,14 @@
-﻿namespace LayoutTemplateWebApp.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EmparejaTecWebApp.Model
 {
     public class AppUser
     {
-        public int idAppUser { get; set; }
+        [Key]
+        public String email { get; set; }
         public String username { get; set; }
         public String summary { get; set; }
         public int age { get; set; }
-        public String email { get; set; }
         public int idGender { get; set; }
         public int idUserStatus { get; set; }
         public String avatarPath { get; set; }
