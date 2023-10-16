@@ -38,8 +38,14 @@
                             <a class="nav-link nav-link-header @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Usuario/Option2">Editar Perfil</a>
                         </li>
                     </ul>
-                    <button onclick="zoomIn()">+</button>
-                    <button onclick="zoomOut()">-</button>
+
+                    <button onclick="zoomIn()" type="button" class="btn btn-outline-primary" style="margin-inline: 10px">
+                        <i class="bi bi"></i> <h2>+</h2>
+                    </button>
+                    <button onclick="zoomOut()" type="button" class="btn btn-outline-secondary" style="margin-inline: 5px">
+                        <i class="bi bi"></i> <h2>-</h2>
+                    </button>
+                    
                 </div>
                 <div class="profileImage bg-footer text-center align-middle fs-3 text-white">
                     <i class="profileImage"></i>
@@ -55,7 +61,7 @@
                 </script>
                 <!-- Header -->
                 <div class="header">
-                    <a href="~/Option2">
+                    <a href="Option2">
                         <img src="~/images/profile_pic/boy.png" id="profileImageHeader" width="90" style="margin: 80px;" />
                     </a>
                 </div>
