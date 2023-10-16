@@ -15,62 +15,15 @@
             </div>
             <div class="modal-body">
                 <h4 class="text-center mb-2">Gustos seleccionados</h4>
-                <div class="">
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Ejercicio</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Rock</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Café</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Ejercicio</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Rock</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Café</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Ejercicio</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Rock</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Café</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Ejercicio</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Rock</span>
-                    <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Café</span>
+                <div class="" id="selected_interests">
                 </div>
                 <h4 class="text-center my-2">Gustos a seleccionar</h4>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Comida</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Rock</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Café</span>
-                <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2">Ejercicio</span>
+                <div id="available_interests">
+                @foreach (var interest in Model.Interests)
+                {
+                    <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2 me-2">@interest.interest</span>
+                }
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Aceptar</button>
@@ -253,19 +206,19 @@
             <h2 class="text-center">Crea tu cuenta</h2>
             <h5 class="text-center">¡Comienza tu nueva aventura!</h5>
         </div>
-        <form>
+        <form method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre de usuario anónimo</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="guayabitaNinja04">
+                <input asp-for="AppUser.username" type="text" class="form-control" id="username" name="username" placeholder="guayabitaNinja04">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Háblanos sobre ti</label>
-                <textarea class="form-control" id="description" name="description"
+                <textarea asp-for="AppUser.summary" class="form-control" id="description" name="description"
                     placeholder="Me gustan mucho los patacones..."></textarea>
             </div>
             <div class="mb-3">
                 <label for="age" class="form-label">Ingresa tu edad</label>
-                <input type="text" class="form-control" id="age" name="age" placeholder="21">
+                <input asp-for="AppUser.age" type="text" class="form-control" id="age" name="age" placeholder="21">
             </div>
             <div class="mb-3">
                 <label class="form-label">Escoge tus intereses</label>
@@ -279,11 +232,11 @@
             <div class="mb-3">
                 <label class="form-label">¿Qué estás buscando?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="romance" name="interests[]" value="romance">
+                    <input class="form-check-input" type="checkbox" id="romance" name="lookingFor" value="romance">
                     <label class="form-check-label" for="romance">Romance</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="amistad" name="interests[]" value="amistad">
+                    <input class="form-check-input" type="checkbox" id="amistad" name="lookingFor" value="amistad">
                     <label class="form-check-label" for="amistad">Amistad</label>
                 </div>
             </div>
@@ -345,15 +298,35 @@
     </div>
 </div>
 
-<!-- Modales para intereses, avatar y fondo de portada (puedes personalizarlos según tus necesidades) -->
-<div class="modal fade" id="interestsModal" tabindex="-1" aria-labelledby="interestsModalLabel" aria-hidden="true">
-    <!-- Contenido del modal para intereses -->
-</div>
-<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
-    <!-- Contenido del modal para avatar -->
-</div>
-<div class="modal fade" id="coverModal" tabindex="-1" aria-labelledby="coverModalLabel" aria-hidden="true">
-    <!-- Contenido del modal para fondo de portada -->
-</div>
+<script>
+    $(document).ready(function () {
+        // Attach a click event handler to badges in the first container
+        $('#available_interests').on('click', '.badge', function () {
+            // Clone the clicked badge
+            var $badge = $(this).clone();
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+            // Change the class to "bg-primary"
+            $badge.removeClass('bg-secondary').addClass('bg-primary');
+
+            // Append the cloned badge to the second container
+            $('#selected_interests').append($badge);
+
+            // Remove the badge from the first container
+            $(this).remove();
+        });
+
+        $('#selected_interests').on('click', '.badge', function () {
+            // Clone the clicked badge
+            var $badge = $(this).clone();
+
+            // Change the class to "bg-secondary"
+            $badge.removeClass('bg-primary').addClass('bg-secondary');
+
+            // Append the cloned badge to the first container
+            $('#available_interests').append($badge);
+
+            // Remove the badge from the second container
+            $(this).remove();
+        });
+    });
+</script>
