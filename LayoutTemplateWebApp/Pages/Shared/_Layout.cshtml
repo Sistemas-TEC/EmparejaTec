@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-colorMainTrans">
             <div class="container-fluid align-middle">
                 <div class="align-middle">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <a class="navbar-brand" asp-area="" asp-page="#">
                         @* //This could be the link to the inicial app page *@
                         <i class="bi bi-mortarboard-fill"></i>
                         EmparejaTec
@@ -32,10 +32,10 @@
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item nav-item-header">
-                            <a class="nav-link nav-link-header @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Usuario/Option1">Inicio</a>
+                            <a class="nav-link nav-link-header @(option1IsActive ? "active" : "")" asp-area="" asp-page="/Usuario/Index">Inicio</a>
                         </li>
                         <li class="nav-item nav-item-header">
-                            <a class="nav-link nav-link-header @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Usuario/Option2">Editar Perfil</a>
+                            <a class="nav-link nav-link-header @(option2IsActive ? "active" : "")" asp-area="" asp-page="/Usuario/EditarPerfil">Editar Perfil</a>
                         </li>
                     </ul>
 

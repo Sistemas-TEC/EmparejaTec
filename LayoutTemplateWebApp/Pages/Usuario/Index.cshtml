@@ -3,16 +3,38 @@
 @{
     ViewData["Title"] = "Inicio";
 }
-<div class="card">
-    <div class="card-header">
-        <h3>Student Information</h3>
-    </div>
+<div class="card" style="background=\wwwroot\images\banner8.png; background-size: cover;">
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="@Model.avatarPath" class="img-thumbnail" width="200" style="margin: 10px;" />
+        <!-- Contenido de tu card -->
+        <div class="card border-light w-75 mx-auto position-relative">
+            <img src="~/images/banner_pic/banner10.png" class="card-img-top" alt="..." width="100px" height="500px">
+            <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
+                <!-- Foto de perfil -->
+                <img src="~/images/profile_pic/turtle.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="230" height="20">
             </div>
-            <div class="col-md-8">
+            <div class="card-body">
+                <h1 class="card-title">samurai99 </h1>
+                <div class="modal-body" style="margin-left: 700px; margin-top:0px">
+                    <div class="">
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Gym</span>
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Viajes</span>
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Fotos</span>
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Lectura</span>
+                    </div>
+                </div>
+
+                <p class="card-text">Soy una persona apasionada por la aventura y la exploración. Mis fines de semana suelen estar llenos de actividades al aire libre, desde hacer senderismo en las montañas hasta explorar nuevos senderos en mi bicicleta de montaña. Me encanta la naturaleza y disfruto de las escapadas de camping para desconectar de la rutina diaria. Además de mi amor por la aventura, soy un apasionado de la música indie y la gastronomía internacional.🥗🍣</p>
+                <p class="card-text"><small class="text-muted"></small></p>
+
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-link align-items-center">
+                        <span class="bi bi-heart-fill" style="font-size: 2em;"></span>
+                    </a>
+                    <a class="btn btn-link align-items-center">
+                        <span class="bi bi-x-circle-fill" style="font-size: 2em;"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
