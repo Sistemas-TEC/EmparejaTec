@@ -42,7 +42,7 @@ namespace EmparejaTecWebApp.Pages
                 // Now make the asynchronous call to the external API
                 else if (HttpContext.Session.GetString("role") == "7415")
                 {
-                    Response.Redirect("/Usuario");
+                    Response.Redirect("/Usuario/Index");
                 }
 
 
@@ -101,7 +101,7 @@ namespace EmparejaTecWebApp.Pages
             {
                 HttpContext.Session.SetString("username", AppUser.username.ToString());
                 HttpContext.Session.SetString("avatarPath", AppUser.avatarPath.ToString());
-                Response.Redirect("/Usuario");
+                Response.Redirect("/Usuario/Index");
             }
 
         }

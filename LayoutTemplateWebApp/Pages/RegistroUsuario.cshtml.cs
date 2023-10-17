@@ -3,6 +3,8 @@ using EmparejaTecWebApp.Extensions;
 using EmparejaTecWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmparejaTecWebApp.Pages
 {
@@ -71,22 +73,61 @@ namespace EmparejaTecWebApp.Pages
 
         }
 
-        public void OnPost(AppUser appUser)
+        public async Task<IActionResult> OnPost(AppUser appUser)
         {
-
             // Get selected interests from the session
             this.SelectedInterests = HttpContext.Session.GetObjectFromJson<List<Interest>>("selectedInterests");
-
-            // Now you can access the selected checkbox items in lookingForSelected
-            var lookingForSelected = LookingFor.Where(item => item.IsSelected).ToList();
-
             // Access the selected gender
             var genderSelected = SelectedGender;
 
-            var attractedToSelected = AttractedTo.Where(item => item.IsSelected).ToList();
+            var parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@email",
+                        HttpContext.Session.GetString("email")),
+                    new SqlParameter("@username",
+                        appUser.username),
+                    new SqlParameter("@summary",
+                        appUser.summary),
+                    new SqlParameter("@age",
+                        appUser.age),
+                    new SqlParameter("@idGender",
+                        genderSelected),
+                    new SqlParameter("@idUserStatus",
+                        1),
+                    new SqlParameter("@avatarPath",
+                        HttpContext.Session.GetString("avatarPath")),
+                    new SqlParameter("@bannerPath",
+                        HttpContext.Session.GetString("coverPath"))
+                };
 
-            //Compose the AppUser object
-
+            int rows = await _db.Database.ExecuteSqlRawAsync("EXEC sp_InsertAppUser @email,"
+                + "@username, @summary, @age, @idGender, @idUserStatus, "
+                + "@avatarPath, @bannerPath", parameters);
+            if (rows > 0)
+            {
+                // Iterate through the selected interests
+                foreach (var interest in SelectedInterests)
+                {
+                    // Add the interest to the database
+                    var parameters2 = new SqlParameter[]
+                    {
+                        new SqlParameter("@email",
+                            HttpContext.Session.GetString("email")),
+                        new SqlParameter("@idInterest",
+                            interest.idInterest)
+                    };
+                    int rows2 = await _db.Database.ExecuteSqlRawAsync("EXEC sp_InsertAppUserXInterest @email, @idInterest", parameters2);
+                    if (rows2 <= 0)
+                    {
+                        return RedirectToPage("/ErrorPage");
+                    }
+                }
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                return RedirectToPage("/ErrorPage");
+            }
         }
 
         [HttpPost]
