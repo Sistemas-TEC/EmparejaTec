@@ -42,7 +42,22 @@ namespace EmparejaTecWebApp.Pages
                 // Now make the asynchronous call to the external API
                 else if (HttpContext.Session.GetString("role") == "7415")
                 {
-                    Response.Redirect("/Usuario/Index");
+                    var path = HttpContext.Request.Path.Value;
+                    if (string.IsNullOrEmpty(path))
+                    {
+                        Response.Redirect("/ErrorPage");
+                        return;
+                    }
+                    // check if path contains /Usuario/something different than index and if so return, dont redirect, otherwise redirect to index
+                    if (path.Contains("/Usuario") && !path.Contains("/Usuario/Index"))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Response.Redirect("/Usuario/Index");
+                        return;
+                    }
                 }
 
 
