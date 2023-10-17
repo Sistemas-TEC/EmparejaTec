@@ -2,6 +2,7 @@
 using EmparejaTecWebApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 
 namespace EmparejaTecWebApp.Pages
 {
@@ -27,7 +28,7 @@ namespace EmparejaTecWebApp.Pages
         }
         public async Task OnGetAsync(string email)
         {
-            /*
+
             string id = HttpContext.Session.GetString("email");
             if (string.IsNullOrEmpty(email))
             {
@@ -102,7 +103,7 @@ namespace EmparejaTecWebApp.Pages
                 HttpContext.Session.SetString("avatarPath", AppUser.avatarPath.ToString());
                 Response.Redirect("/Usuario");
             }
-            */
+
         }
 
     }

@@ -1,8 +1,10 @@
 ﻿@page
 @model EmparejaTecWebApp.Pages.RegistroUsuarioModel
+@inject IAntiforgery antiforgery
 @{
     ViewData["Title"] = "RegistroUsuario";
     Layout = "_LayoutRegistro";
+    var token = antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
 }
 
 <!--Interests Modal-->
@@ -19,14 +21,14 @@
                 </div>
                 <h4 class="text-center my-2">Gustos a seleccionar</h4>
                 <div id="available_interests">
-                @foreach (var interest in Model.Interests)
-                {
-                    <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2 me-2">@interest.interest</span>
-                }
+                    @foreach (var interest in Model.Interests)
+                    {
+                        <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2 me-2">@interest.interest</span>
+                    }
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -44,76 +46,78 @@
             <div class="modal-body">
                 <div class="container text-center">
                     <h2 class="text-center">Avatar Actual</h2>
-                    <img src="~/images/profile_pic/boy.png" alt="Avatar por defecto" class="img-fluid rounded-circle"
-                        width="150">
-                    <p>Nick</p>
+                    <div id="default_pic">
+                        <img src="~/images/profile_pic/boy.png" alt="Avatar por defecto"
+                            class="img-fluid rounded-circle" width="150">
+                        <p>Nick</p>
+                    </div>
                     <h2 class="text-center mt-4">Avatares a Escoger</h2>
                     <div class="row text-center">
                         <div class="col-4">
-                            <img src="~/images/profile_pic/penguin.png" alt="Pingu" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/penguin.png" alt="Pingu"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Pingu</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/zebra.png" alt="Zebrilla" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/zebra.png" alt="Zebrilla"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Zebrilla</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/shark.png" alt="Tiburoncín" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/shark.png" alt="Tiburoncín"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Tiburoncín</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/sloth.png" alt="Flash" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/sloth.png" alt="Flash"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Flash</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/triceratops.png" alt="Tracy" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/triceratops.png" alt="Tracy"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Tracy</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/rex.png" alt="Pepe" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/rex.png" alt="Pepe"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Pepe</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/hacker.png" alt="Hackerman" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/hacker.png" alt="Hackerman"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Hackerman</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/viking.png" alt="Helgar" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/viking.png" alt="Helgar"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Helgar</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/boy.png" alt="Nick" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/boy.png" alt="Nick"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Nick</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/girl.png" alt="Ana" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/girl.png" alt="Ana"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Ana</p>
                         </div>
                         <div class="col-4">
                             <img src="~/images/profile_pic/frankenstein.png" alt="Frank"
-                                class="img-fluid rounded-circle" width="150">
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>Frank</p>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/profile_pic/devil.png" alt="El Chamuco" class="img-fluid rounded-circle"
-                                width="150">
+                            <img src="~/images/profile_pic/devil.png" alt="El Chamuco"
+                                class="img-fluid rounded-circle selectable-image clickable" width="150">
                             <p>El Chamuco</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary" id="avatar_submit">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -132,7 +136,7 @@
                 <div class="container text-center">
                     <h2 class="text-center">Fondo de portada actual</h2>
                     <div class="d-flex justify-content-center align-items-center w-100">
-                        <div class="image-container text-center">
+                        <div class="image-container text-center" id="default_cover">
                             <img src="~/images/banner_pic/banner1.png" alt="azul cielo" class="img-fluid rounded-3"
                                 width="600">
                         </div>
@@ -140,58 +144,58 @@
                     <h2 class="text-center mt-4">Fondos de portada a escoger</h2>
                     <div class="row text-center">
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner1.png" alt="azul cielo" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner1.png" alt="azul cielo"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
                             <img src="~/images/banner_pic/banner2.png" alt="guirnaldas de acero"
-                                class="img-fluid rounded-3" width="240">
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner3.png" alt="anclas marinas" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner3.png" alt="anclas marinas"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner4.png" alt="ave de invierno" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner4.png" alt="ave de invierno"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner5.png" alt="zorro egipcio" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner5.png" alt="zorro egipcio"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner7.png" alt="akita flameante" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner7.png" alt="akita flameante"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
                             <img src="~/images/banner_pic/banner8.png" alt="espirito andante"
-                                class="img-fluid rounded-3" width="240">
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner9.png" alt="dientes de leon" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner9.png" alt="dientes de leon"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
-                            <img src="~/images/banner_pic/banner10.png" alt="otoño" class="img-fluid rounded-3"
-                                width="240">
+                            <img src="~/images/banner_pic/banner10.png" alt="otoño"
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
                             <img src="~/images/banner_pic/banner11.png" alt="delicadeza de invierno"
-                                class="img-fluid rounded-3" width="240">
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
                             <img src="~/images/banner_pic/banner12.png" alt="el ojo que todo lo ve"
-                                class="img-fluid rounded-3" width="240">
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                         <div class="col-4 mt-4">
                             <img src="~/images/banner_pic/banner13.png" alt="arenas del tiempo"
-                                class="img-fluid rounded-3" width="240">
+                                class="img-fluid rounded-3 selectable-cover clickable" width="240">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary" id="cover_submit">Aceptar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -209,11 +213,12 @@
         <form method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre de usuario anónimo</label>
-                <input asp-for="AppUser.username" type="text" class="form-control" id="username" name="username" placeholder="guayabitaNinja04">
+                <input asp-for="AppUser.username" type="text" class="form-control" id="username" name="username"
+                    placeholder="guayabitaNinja04">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Háblanos sobre ti</label>
-                <textarea asp-for="AppUser.summary" class="form-control" id="description" name="description"
+                <textarea asp-for="AppUser.summary" class="form-control" id="summary" name="summary"
                     placeholder="Me gustan mucho los patacones..."></textarea>
             </div>
             <div class="mb-3">
@@ -231,47 +236,41 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">¿Qué estás buscando?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="romance" name="lookingFor" value="romance">
-                    <label class="form-check-label" for="romance">Romance</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="amistad" name="lookingFor" value="amistad">
-                    <label class="form-check-label" for="amistad">Amistad</label>
-                </div>
+                @for (var i = 0; i < Model.LookingFor.Count; i++)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="@Model.LookingFor[i].IsSelected">
+                        <input class="form-check-input" type="hidden" asp-for="@Model.LookingFor[i].Value">
+                        <input class="form-check-input" type="hidden" asp-for="@Model.LookingFor[i].Label">
+                        <label class="form-check-label"
+                            asp-for="@Model.LookingFor[i].IsSelected">@Model.LookingFor[i].Label</label>
+                    </div>
+                }
             </div>
             <div class="mb-3">
                 <label class="form-label">¿Cuál es tu sexo?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="masculino" value="masculino">
-                    <label class="form-check-label" for="masculino">Masculino</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="femenino" value="femenino">
-                    <label class="form-check-label" for="femenino">Femenino</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="otro" value="otro">
-                    <label class="form-check-label" for="otro">Otro</label>
-                </div>
+                @for (var i = 0; i < Model.Genders.Count; i++)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="SelectedGender" asp-for="@Model.SelectedGender"
+                            value="@Model.Genders[i].Value" id="radio_@i">
+                        <label class="form-check-label" asp-for="@Model.SelectedGender"
+                            for="radio_@i">@Model.Genders[i].Label</label>
+                    </div>
+                }
             </div>
             <div class="mb-3">
                 <label class="form-label">¿A qué sexo te sientes atraído?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="atraccion-masculino" name="attraction[]"
-                        value="masculino">
-                    <label class="form-check-label" for="atraccion-masculino">Masculino</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="atraccion-femenino" name="attraction[]"
-                        value="femenino">
-                    <label class="form-check-label" for="atraccion-femenino">Femenino</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="atraccion-otro" name="attraction[]"
-                        value="otro">
-                    <label class="form-check-label" for="atraccion-otro">Otro</label>
-                </div>
+                @for (var i = 0; i < Model.AttractedTo.Count; i++)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="@Model.AttractedTo[i].IsSelected">
+                        <input class="form-check-input" type="hidden" asp-for="@Model.AttractedTo[i].Value">
+                        <input class="form-check-input" type="hidden" asp-for="@Model.AttractedTo[i].Label">
+                        <label class="form-check-label"
+                            asp-for="@Model.AttractedTo[i].IsSelected">@Model.AttractedTo[i].Label</label>
+                    </div>
+                }
             </div>
             <div class="mb-3">
                 <label class="form-label">Escoge tu avatar</label>
@@ -292,41 +291,140 @@
                 </div>
             </div>
             <div class="mb-3 w-100 mt-5">
-                <button type="submit" class="btn btn-primary w-100">Registrarme</button>
+                <button type="submit" class="btn btn-primary w-100" asp-page-handler="Register">Registrarme</button>
             </div>
         </form>
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        // Attach a click event handler to badges in the first container
-        $('#available_interests').on('click', '.badge', function () {
-            // Clone the clicked badge
-            var $badge = $(this).clone();
+@Html.AntiForgeryToken()
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Attach a click event handler to badges in the second container (for deselecting interests).
+            $('#selected_interests').on('click', '.badge', function () {
+                var $badge = $(this);
+                var interestName = $(this).text().trim();
 
-            // Change the class to "bg-primary"
-            $badge.removeClass('bg-secondary').addClass('bg-primary');
+                // Make an AJAX request to remove the interest
+                $.ajax({
+                    type: "POST",
+                    url: '/RegistroUsuario?handler=RemoveInterest',
+                    dataType: "json",
+                    data: { interest: interestName },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Clone the badge and move it to the first container
+                            var $clonedBadge = $badge.clone();
+                            $clonedBadge.removeClass('bg-primary').addClass('bg-secondary');
+                            $('#available_interests').append($clonedBadge);
+                            $badge.remove();
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                    }
+                });
+            });
 
-            // Append the cloned badge to the second container
-            $('#selected_interests').append($badge);
+            // Attach a click event handler to badges in the first container (for adding interests).
+            $('#available_interests').on('click', '.badge', function () {
+                var $badge = $(this); // Store the clicked badge element in a variable
+                var interestName = $badge.text().trim();
 
-            // Remove the badge from the first container
-            $(this).remove();
+                // Make an AJAX request to add the interest
+                $.ajax({
+                    type: "POST",
+                    url: '/RegistroUsuario?handler=AddInterest',
+                    dataType: "json",
+                    data: { interest: interestName },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Clone the badge and move it to the second container
+                            var $clonedBadge = $badge.clone();
+                            $clonedBadge.removeClass('bg-secondary').addClass('bg-primary');
+                            $('#selected_interests').append($clonedBadge);
+                            $badge.remove(); // Use the stored badge element variable here
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            })
+
+            $('#avatar_submit').click(function () {
+                var avatarPath = $("#default_pic img").attr("src");
+
+                // Make an AJAX request to set the avatar path
+                $.ajax({
+                    type: "POST",
+                    url: '/RegistroUsuario?handler=SetAvatarPath', // Change 'YourRazorPagePath' to your Razor Page's path
+                    dataType: "json",
+                    data: { avatarPath: avatarPath },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Handle success
+                            $("#avatarModal").modal("hide");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            });
+
+            $('#cover_submit').click(function () {
+                var coverPath = $("#default_cover img").attr("src");
+
+                // Make an AJAX request to set the cover path
+                $.ajax({
+                    type: "POST",
+                    url: '/RegistroUsuario?handler=SetCoverPath', // Change 'YourRazorPagePath' to your Razor Page's path
+                    dataType: "json",
+                    data: { coverPath: coverPath },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Handle success
+                            $("#coverModal").modal("hide");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            });
+
+            $(".selectable-image").click(function () {
+                var clickedImagePath = $(this).attr("src");
+                var clickedImageText = $(this).next("p").text();
+
+                $("#default_pic img").attr("src", clickedImagePath);
+                $("#default_pic p").text(clickedImageText);
+            });
+
+            $(".selectable-cover").click(function () {
+                var clickedImagePath = $(this).attr("src");
+                $("#default_cover img").attr("src", clickedImagePath);
+            });
         });
-
-        $('#selected_interests').on('click', '.badge', function () {
-            // Clone the clicked badge
-            var $badge = $(this).clone();
-
-            // Change the class to "bg-secondary"
-            $badge.removeClass('bg-primary').addClass('bg-secondary');
-
-            // Append the cloned badge to the first container
-            $('#available_interests').append($badge);
-
-            // Remove the badge from the second container
-            $(this).remove();
-        });
-    });
-</script>
+    </script>
+}
