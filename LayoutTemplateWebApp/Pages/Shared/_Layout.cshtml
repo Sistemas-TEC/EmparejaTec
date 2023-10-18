@@ -26,8 +26,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     @{
-                        var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
-                        var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
+                        var option1IsActive = Context.Request.Path.Value.Contains("/Usuario/Index");
+                        var option2IsActive = Context.Request.Path.Value.Contains("/Usuario/EditarPerfilPreview");
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -50,12 +50,12 @@
                         </button>
                     </div>
 
-                    
+
                 </div>
-                <div class="profileImage bg-footer text-center align-middle fs-3 text-white" style="margin-left:20px; border-radius: 80px 10px;">
+                <div class="profileImage bg-footer text-center align-middle fs-3 text-white">
                     <i class="profileImage"></i>
                 </div>
-                
+
                 <!-- Header -->
                 <div class="header">
                     <a href="Option2">
@@ -67,45 +67,12 @@
         </nav>
     </header>
 
-    <style>
-        .request-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .profile-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .username-container {
-            flex-grow: 1;
-            /* Esto hará que el contenedor del nombre de usuario ocupe el espacio disponible */
-        }
-
-        .button-and-name-container {
-            display: flex;
-            align-items: center;
-            gap: 20px; /* Espacio entre el nombre y los botones */
-        }
-    </style>
-
     <!--AQUI COMIENZA EL SIDE BAR-->
     <div class="page d-flex flex-row bg-grayContrast">
         <aside class="site-bar bg-white">
             <div class="container">
                 <div class="row mb-3">
-                    <a href="#exampleModal" data-bs-toggle="modal" class="list-group-item text-center" href="#">
+                    <a href="#exampleModal" data-bs-toggle="modal" class="list-group-item text-center">
                         Solicitudes <span class="badge bg-colorMain notification">5</span>
                         <!-- Enlace para abrir el modal -->
 
@@ -173,7 +140,7 @@
                 </li>
             </ul>
             <ul class="list-group">
-                <a style="text-decoration:none" href="~/Messages">
+                <a style="text-decoration:none" href="/Usuario/Messages">
                 <li class="list-group-item d-flex justify-content-between align-items-center clickable chat">
                     <div class="profile-pic">
                         <img src="~/images/profile_pic/boy.png" alt="Profile Picture" class="img-fluid rounded-circle" width="32">
@@ -219,11 +186,10 @@
         }
     </script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iKt18ZzQZl3/JMr59u+ZlZA2T9n6K/HJQCKr59bN6EGGoFi1B/ljED" crossorigin="anonymous">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iKt18ZzQZl3/JMr59u+ZlZA2T9n6K/HJQCKr59bN6EGGoFi1B/ljED" crossorigin="anonymous">
-
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

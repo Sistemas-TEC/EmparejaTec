@@ -67,3 +67,34 @@ for details on configuring this project to bundle and minify static web assets. 
     height:100%;
     max-height: var(--footerMaxHeigth);
 }
+.request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.username-container {
+    flex-grow: 1;
+    /* Esto hará que el contenedor del nombre de usuario ocupe el espacio disponible */
+}
+
+.button-and-name-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre el nombre y los botones */
+}
+

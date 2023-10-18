@@ -37,3 +37,8 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/chatHub");
+});
