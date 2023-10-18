@@ -90,3 +90,32 @@ BEGIN
     PRINT 'Registros borrados con éxito.';
 END;
 GO
+
+CREATE OR ALTER PROCEDURE sp_DeleteUserPossibleMatch
+    @email VARCHAR(255)
+AS
+BEGIN
+    -- Borrar registros con el email especificado
+    DELETE FROM UserPossibleMatch 
+    WHERE idPossibleMatch = @email;
+    
+    PRINT 'Registros borrados con éxito.';
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_InsertUserPossibleMatches
+    @idUserLogged VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO UserPossibleMatch (idUserLogged, idPossibleMatch)
+    SELECT 
+        @idUserLogged, 
+        u.email
+    FROM 
+        AppUser u
+    LEFT JOIN 
+        UserPossibleMatch upm ON u.email = upm.idPossibleMatch AND upm.idUserLogged = @idUserLogged
+    WHERE 
+        u.email <> @idUserLogged AND
+        upm.idPossibleMatch IS NULL;
+END;
