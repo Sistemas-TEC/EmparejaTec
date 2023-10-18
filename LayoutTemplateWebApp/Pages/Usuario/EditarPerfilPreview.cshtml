@@ -1,0 +1,38 @@
+@page
+@model EditarPerfilPreviewModel
+@{
+
+    ViewData["Title"] = "Editar perfil preview";
+}
+
+<!-- INICIO DEL CARD -->
+<div class="card border-light w-75 mx-auto position-relative pb-4">
+    <div class="banner-container">
+        <img src="@Model.AppUser.bannerPath" class="card-img-top" alt="...">
+    </div>
+    <div class="position-absolute start-0 translate-middle-y" style="z-index: 1; top: 40% !important">
+        <!-- Foto de perfil -->
+        <img src="@Model.AppUser.avatarPath" class="img-fluid rounded-circle" alt="Foto de perfil" width="200" height="250">
+    </div>
+    <div class="card-body">
+        <!-- Foto de perfil -->
+        <h1 class="card-title">@Model.AppUser.username</h1>
+        <br>
+        <!-- Descripcion -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="card-text">@Model.AppUser.summary</p>
+                </div>
+                <div class="col">
+                    @foreach (var interest in Model.Interests)
+                    {
+                        <span class="badge rounded-pill bg-primary fs-5 mt-2 me-2">@interest.interest</span>
+                    }
+                </div>
+            </div>
+        </div>
+        <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+</div>
+<!-- FIN DEL CARD -->
