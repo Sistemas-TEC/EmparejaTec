@@ -1,4 +1,4 @@
-CREATE PROCEDURE sp_InsertAppUser 
+CREATE OR ALTER PROCEDURE sp_InsertAppUser 
     @email VARCHAR(255),
     @username VARCHAR(255),
     @summary TEXT,
@@ -25,7 +25,7 @@ END;
 GO
 
 
-CREATE PROCEDURE sp_InsertAppUserXInterest
+CREATE OR ALTER PROCEDURE sp_InsertAppUserXInterest
     @email VARCHAR(255),
     @idInterest INT
 AS
@@ -42,5 +42,51 @@ BEGIN
     VALUES (@email, @idInterest);
     
     PRINT 'Record inserted successfully.';
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_EditAppUser
+    @email VARCHAR(255), -- Usado para identificar el registro a editar
+    @username VARCHAR(255) = NULL,
+    @summary TEXT = NULL,
+    @age INT = NULL,
+    @idGender INT = NULL,
+    @idUserStatus INT = NULL,
+    @avatarPath VARCHAR(255) = NULL,
+    @bannerPath VARCHAR(255) = NULL
+AS
+BEGIN
+    -- Verificar si el usuario existe
+    IF NOT EXISTS (SELECT 1 FROM AppUser WHERE email = @email)
+    BEGIN
+        RAISERROR('El usuario con el correo especificado no existe.', 16, 1); 
+        RETURN;
+    END
+
+    -- Editar el registro
+    UPDATE AppUser 
+    SET 
+        username = ISNULL(@username, username),
+        summary = ISNULL(@summary, summary),
+        age = ISNULL(@age, age),
+        idGender = ISNULL(@idGender, idGender),
+        idUserStatus = ISNULL(@idUserStatus, idUserStatus),
+        avatarPath = ISNULL(@avatarPath, avatarPath),
+        bannerPath = ISNULL(@bannerPath, bannerPath)
+    WHERE email = @email;
+    
+    PRINT 'Registro actualizado con éxito.';
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_DeleteAppUserXInterestByEmail
+    @email VARCHAR(255)
+AS
+BEGIN
+    -- Borrar registros con el email especificado
+    DELETE FROM AppUserXInterest 
+    WHERE email = @email;
+    
+    PRINT 'Registros borrados con éxito.';
 END;
 GO

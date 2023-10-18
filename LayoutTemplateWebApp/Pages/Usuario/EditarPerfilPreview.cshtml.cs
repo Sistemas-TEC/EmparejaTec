@@ -1,6 +1,5 @@
 using EmparejaTecWebApp.Data;
 using EmparejaTecWebApp.Model;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
@@ -9,7 +8,6 @@ namespace EmparejaTecWebApp.Pages.Usuario
 
     public class EditarPerfilPreviewModel : PageModel
     {
-        [BindProperty]
         public AppUser AppUser { get; set; }
 
         private readonly ApplicationDBContext _db;
