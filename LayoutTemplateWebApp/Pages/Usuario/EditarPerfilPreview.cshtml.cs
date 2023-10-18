@@ -27,7 +27,8 @@ namespace EmparejaTecWebApp.Pages.Usuario
             List<AppUserXInterest> appUserXInterest = _db.AppUserXInterest.Where(a => a.email == email).ToList();
             List<Interest> interests = _db.Interest.ToList();
 
-            // Iterate through the list of AppUserXInterest and iterate through the list of Interest where there is a match between the interestId of both tables and save the interest to class variable Interests
+            // Iterate through the list of AppUserXInterest and iterate through the list of Interest
+            // where there is a match between the interestId of both tables and save the interest to class variable Interests
             foreach (var item in appUserXInterest)
             {
                 foreach (var interest in interests)

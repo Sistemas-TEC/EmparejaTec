@@ -16,5 +16,7 @@ namespace EmparejaTecWebApp.Data
         public DbSet<Interest> Interest { get; set; }
 
         public DbSet<AppUserXInterest> AppUserXInterest { get; set; }
+
+        public DbSet<UserPossibleMatch> UserPossibleMatch { get; set; }
     }
 }

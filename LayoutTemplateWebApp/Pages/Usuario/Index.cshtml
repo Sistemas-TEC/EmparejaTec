@@ -1,41 +1,101 @@
 ﻿@page
 @model EmparejaTecWebApp.Pages.Usuario.IndexModel
+@inject IAntiforgery antiforgery
 @{
     ViewData["Title"] = "Inicio";
 }
-<div class="card" style="background=\wwwroot\images\banner8.png; background-size: cover;">
+
+@if (Model.CurrentDisplayedAppUser == null)
+{
+    <div class="alert alert-danger" role="alert">
+        No se encuentran mas usuarios para emparejar
+    </div>
+    return;
+}
+<div class="card border-light w-75 mx-auto position-relative pb-4">
+    <div class="banner-container">
+        <img src="@Model.CurrentDisplayedAppUser.bannerPath" class="card-img-top" alt="...">
+    </div>
+    <div class="position-absolute start-0 translate-middle-y" style="z-index: 1; top: 40% !important">
+        <!-- Foto de perfil -->
+        <img src="@Model.CurrentDisplayedAppUser.avatarPath" class="img-fluid rounded-circle" alt="Foto de perfil" width="200" height="250">
+    </div>
     <div class="card-body">
-        <!-- Contenido de tu card -->
-        <div class="card border-light w-75 mx-auto position-relative">
-            <img src="~/images/banner_pic/banner10.png" class="card-img-top" alt="..." width="100px" height="500px">
-            <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
-                <!-- Foto de perfil -->
-                <img src="~/images/profile_pic/turtle.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="230" height="20">
-            </div>
-            <div class="card-body">
-                <h1 class="card-title">samurai99 </h1>
-                <div class="modal-body" style="margin-left: 700px; margin-top:0px">
-                    <div class="">
-                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Gym</span>
-                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Comida</span>
-                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Viajes</span>
-                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Fotos</span>
-                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2">Lectura</span>
+        <!-- Foto de perfil -->
+        <h1 class="card-title ps-2">@Model.CurrentDisplayedAppUser.username</h1>
+        <br>
+        <!-- Descripcion -->
+        <div class="d-flex flex-column justify-content-between" style="height: 70% !important;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text">@Model.CurrentDisplayedAppUser.summary</p>
+                    </div>
+                    <div class="col">
+                        @foreach (var interest in Model.CurrentDisplayedInterests)
+                        {
+                            <span class="badge rounded-pill bg-primary fs-5 mt-2 me-2">@interest.interest</span>
+                        }
                     </div>
                 </div>
-
-                <p class="card-text">Soy una persona apasionada por la aventura y la exploración. Mis fines de semana suelen estar llenos de actividades al aire libre, desde hacer senderismo en las montañas hasta explorar nuevos senderos en mi bicicleta de montaña. Me encanta la naturaleza y disfruto de las escapadas de camping para desconectar de la rutina diaria. Además de mi amor por la aventura, soy un apasionado de la música indie y la gastronomía internacional.🥗🍣</p>
-                <p class="card-text"><small class="text-muted"></small></p>
-
-                <div class="d-flex justify-content-center">
-                    <a class="btn btn-link align-items-center">
-                        <span class="bi bi-heart-fill" style="font-size: 2em;"></span>
-                    </a>
-                    <a class="btn btn-link align-items-center">
-                        <span class="bi bi-x-circle-fill" style="font-size: 2em;"></span>
-                    </a>
-                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-link align-items-center">
+                    <span class="bi bi-x-circle-fill ignore"></span>
+                </a>
+                <a class="btn btn-link align-items-center">
+                    <span class="bi bi-heart-fill heart"></span>
+                </a>
             </div>
         </div>
+        <p class="card-text"><small class="text-muted"></small></p>
     </div>
 </div>
+
+@Html.AntiForgeryToken()
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $(".heart").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Usuario/Index?handler=Accept",
+                dataType: "json",
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                data: { email: "@Model.CurrentDisplayedAppUser.email" },
+                success: function (data) {
+                    if (data.success) {
+                        window.location.reload();
+                    }
+                },
+                error: function (req, status, error) {
+                    // Handle the error
+                    console.log(error);
+                    console.log(status);
+                    console.log(req);
+                }
+            });
+        });
+        $(".ignore").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Usuario/Index?handler=Reject",
+                dataType: "json",
+                headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    data: { email: "@Model.CurrentDisplayedAppUser.email" },
+                success: function (data) {
+                    if (data.success) {
+                        window.location.reload();   
+                    }
+                },
+                error: function (req, status, error) {
+                    // Handle the error
+                    console.log(error);
+                    console.log(status);
+                    console.log(req);
+                }
+            });
+        });
+    });
+</script>
+}

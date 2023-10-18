@@ -271,6 +271,15 @@ textarea {
     height: 100%;
 }
 
+.ignore {
+    font-size: 2em;
+    color: black !important
+}
+
+.heart {
+    font-size: 2em;
+    color: red !important;
+}
 
 
 

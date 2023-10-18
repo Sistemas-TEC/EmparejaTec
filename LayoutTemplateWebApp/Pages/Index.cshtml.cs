@@ -70,9 +70,9 @@ namespace EmparejaTecWebApp.Pages
 
                         for (int i = 0; i < User.ApplicationRoles.Count; i++)
                         {
-                            if (User.ApplicationRoles[i].ApplicationId == 1) // eventually has to be changed
+                            if (User.ApplicationRoles[i].ApplicationId == 3) // eventually has to be changed
                             {
-                                if (User.ApplicationRoles[i].Id == 1) // eventually has to be changed
+                                if (User.ApplicationRoles[i].Id == 13) // eventually has to be changed
                                 {
                                     HttpContext.Session.SetString("role", "7415"); //Normal requester user
                                     break;

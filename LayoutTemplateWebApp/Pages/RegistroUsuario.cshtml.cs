@@ -122,6 +122,13 @@ namespace EmparejaTecWebApp.Pages
                         return RedirectToPage("/ErrorPage");
                     }
                 }
+                var parameters3 = new SqlParameter[]
+                {
+                    new SqlParameter("@idUserLogged", HttpContext.Session.GetString("email"))
+                };
+                await _db.Database.ExecuteSqlRawAsync("EXEC sp_InsertUserPossibleMatches @idUserLogged",
+                                                          parameters3);
+
                 return RedirectToPage("/Index");
             }
             else
