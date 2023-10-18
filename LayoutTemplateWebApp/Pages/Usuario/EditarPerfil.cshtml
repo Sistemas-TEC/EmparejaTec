@@ -1,24 +1,380 @@
 @page
-@model EditarPerfilModel
+@model EmparejaTecWebApp.Pages.Usuario.EditarPerfilModel
+@inject IAntiforgery antiforgery
 @{
-
-    ViewData["Title"] = "Editar perfil";
 }
 
-<!-- INICIO DEL CARD -->
-<div class="card border-light w-75 mx-auto position-relative">
-    <img src="~/images/banner_pic/banner5.png" class="card-img-top" alt="..." width="100px" height="500px">
-    <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
-        <!-- Foto de perfil -->
-        <img src="~/images/profile_pic/boy.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="200" height="250">
-    </div>
-    <div class="card-body">
-        <h1 class="card-title">samurai99</h1>
-        <br>
-        <p class="card-text">Soy una persona apasionada por la aventura y la exploración. Mis fines de semana suelen estar llenos de actividades al aire libre, desde hacer senderismo en las montañas hasta explorar nuevos senderos en mi bicicleta de montaña. Me encanta la naturaleza y disfruto de las escapadas de camping para desconectar de la rutina diaria. Además de mi amor por la aventura, soy un apasionado de la música indie y la gastronomía internacional.🥗🍣</p>
-        <p class="card-text"><small class="text-muted"></small></p>
-        <div class="d-flex justify-content-center">
+<!--Interests Modal-->
+<div class="modal fade" id="interestsModal" tabindex="-1" aria-labelledby="interestsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="interestsModalLabel">Escoger gustos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center mb-2">Gustos seleccionados</h4>
+                <div class="" id="selected_interests">
+                    @foreach (var interest in Model.SelectedInterests)
+                    {
+                        <span class="badge rounded-pill bg-primary fs-5 clickable mt-2 me-2">@interest.interest</span>
+                    }
+                </div>
+                <h4 class="text-center my-2">Gustos a seleccionar</h4>
+                <div id="available_interests">
+                    @foreach (var interest in Model.Interests)
+                    {
+                        <span class="badge rounded-pill bg-secondary fs-5 clickable mt-2 me-2">@interest.interest</span>
+                    }
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
 </div>
-<!-- FIN DEL CARD -->
+
+<!--Avatar Modal-->
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="avatarModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <h2 class="text-center">Avatar Actual</h2>
+                    <div id="default_pic">
+                        <img src="@Model.AppUser.avatarPath" alt="Avatar actual"
+                             class="img-fluid rounded-circle" width="150">
+                    </div>
+                    <h2 class="text-center mt-4">Avatares a Escoger</h2>
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/penguin.png" alt="Pingu"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Pingu</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/zebra.png" alt="Zebrilla"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Zebrilla</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/shark.png" alt="Tiburoncín"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Tiburoncín</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/sloth.png" alt="Flash"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Flash</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/triceratops.png" alt="Tracy"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Tracy</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/rex.png" alt="Pepe"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Pepe</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/hacker.png" alt="Hackerman"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Hackerman</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/viking.png" alt="Helgar"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Helgar</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/boy.png" alt="Nick"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Nick</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/girl.png" alt="Ana"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Ana</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/frankenstein.png" alt="Frank"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>Frank</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/profile_pic/devil.png" alt="El Chamuco"
+                                 class="img-fluid rounded-circle selectable-image clickable" width="150">
+                            <p>El Chamuco</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="avatar_submit">Aceptar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Cover Modal-->
+<div class="modal fade" id="coverModal" tabindex="-1" aria-labelledby="coverModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="coverModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <h2 class="text-center">Fondo de portada actual</h2>
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <div class="image-container text-center" id="default_cover">
+                            <img src="@Model.AppUser.bannerPath" alt="fondo portada actual" class="img-fluid rounded-3"
+                                 width="600">
+                        </div>
+                    </div>
+                    <h2 class="text-center mt-4">Fondos de portada a escoger</h2>
+                    <div class="row text-center">
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner1.png" alt="azul cielo"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner2.png" alt="guirnaldas de acero"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner3.png" alt="anclas marinas"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner4.png" alt="ave de invierno"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner5.png" alt="zorro egipcio"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner7.png" alt="akita flameante"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner8.png" alt="espirito andante"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner9.png" alt="dientes de leon"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner10.png" alt="otoño"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner11.png" alt="delicadeza de invierno"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner12.png" alt="el ojo que todo lo ve"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                        <div class="col-4 mt-4">
+                            <img src="~/images/banner_pic/banner13.png" alt="arenas del tiempo"
+                                 class="img-fluid rounded-3 selectable-cover clickable" width="240">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="cover_submit">Aceptar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container d-flex justify-content-center align-items-start h-100 overflow-y-auto mt-5">
+    <div class="container" style="width: 400px;">
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Modificar nombre de usuario</label>
+                <input asp-for="AppUser.username" type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Modificar descripción</label>
+                <textarea asp-for="AppUser.summary" class="form-control" id="summary" name="summary"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Modifica tus intereses</label>
+                <div class="w-100">
+                    <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#interestsModal">
+                        Modificar intereses
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Modifica tu avatar</label>
+                <div class="w-100">
+                    <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#avatarModal">
+                        Modificar avatar
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Modifica tu fondo de portada</label>
+                <div class="w-100">
+                    <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal"
+                            data-bs-target="#coverModal">
+                        Modificar fondo de portada
+                    </button>
+                </div>
+            </div>
+            <div class="mb-3 w-100 mt-5">
+                <button type="submit" class="btn btn-primary w-100" asp-page-handler="">Guardar cambios</button>
+                <a class="btn btn-outline-primary w-100 mt-2" asp-page="/Usuario/EditarPerfilPreview">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@Html.AntiForgeryToken()
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Attach a click event handler to badges in the second container (for deselecting interests).
+            $('#selected_interests').on('click', '.badge', function () {
+                var $badge = $(this);
+                var interestName = $(this).text().trim();
+
+                // Make an AJAX request to remove the interest
+                $.ajax({
+                    type: "POST",
+                    url: '/Usuario/EditarPerfil?handler=RemoveInterest',
+                    dataType: "json",
+                    data: { interest: interestName },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Clone the badge and move it to the first container
+                            var $clonedBadge = $badge.clone();
+                            $clonedBadge.removeClass('bg-primary').addClass('bg-secondary');
+                            $('#available_interests').append($clonedBadge);
+                            $badge.remove();
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                    }
+                });
+            });
+
+            // Attach a click event handler to badges in the first container (for adding interests).
+            $('#available_interests').on('click', '.badge', function () {
+                var $badge = $(this); // Store the clicked badge element in a variable
+                var interestName = $badge.text().trim();
+
+                // Make an AJAX request to add the interest
+                $.ajax({
+                    type: "POST",
+                    url: '/Usuario/EditarPerfil?handler=AddInterest',
+                    dataType: "json",
+                    data: { interest: interestName },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Clone the badge and move it to the second container
+                            var $clonedBadge = $badge.clone();
+                            $clonedBadge.removeClass('bg-secondary').addClass('bg-primary');
+                            $('#selected_interests').append($clonedBadge);
+                            $badge.remove(); // Use the stored badge element variable here
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            })
+
+            $('#avatar_submit').click(function () {
+                var avatarPath = $("#default_pic img").attr("src");
+
+                // Make an AJAX request to set the avatar path
+                $.ajax({
+                    type: "POST",
+                    url: '/Usuario/EditarPerfil?handler=SetAvatarPath', // Change 'YourRazorPagePath' to your Razor Page's path
+                    dataType: "json",
+                    data: { avatarPath: avatarPath },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Handle success
+                            $("#avatarModal").modal("hide");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            });
+
+            $('#cover_submit').click(function () {
+                var coverPath = $("#default_cover img").attr("src");
+
+                // Make an AJAX request to set the cover path
+                $.ajax({
+                    type: "POST",
+                    url: '/Usuario/EditarPerfil?handler=SetCoverPath', // Change 'YourRazorPagePath' to your Razor Page's path
+                    dataType: "json",
+                    data: { coverPath: coverPath },
+                    headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
+                    success: function (result) {
+                        // Check if the request was successful
+                        if (result.success) {
+                            // Handle success
+                            $("#coverModal").modal("hide");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        // Handle the error
+                        console.log(error);
+                        console.log(status);
+                        console.log(req);
+                    }
+                });
+            });
+
+            $(".selectable-image").click(function () {
+                var clickedImagePath = $(this).attr("src");
+                $("#default_pic img").attr("src", clickedImagePath);
+            });
+
+            $(".selectable-cover").click(function () {
+                var clickedImagePath = $(this).attr("src");
+                $("#default_cover img").attr("src", clickedImagePath);
+            });
+        });
+    </script>
+}
