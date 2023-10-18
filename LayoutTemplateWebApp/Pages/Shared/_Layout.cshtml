@@ -26,8 +26,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     @{
-                        var option1IsActive = Context.Request.Path.Value.Contains("/Option1");
-                        var option2IsActive = Context.Request.Path.Value.Contains("/Option2");
+                        var option1IsActive = Context.Request.Path.Value.Contains("/Usuario/Index");
+                        var option2IsActive = Context.Request.Path.Value.Contains("/Usuario/EditarPerfilPreview");
                     }
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -48,15 +48,14 @@
                         </button>
                         <button id="zoom-icon" class="icon-button bi bi-zoom-out" aria-label="Disminuir Tamaño de letra" style="cursor: pointer;" onclick="zoomOut()">
                         </button>
-
                     </div>
 
-                    
+
                 </div>
                 <div class="profileImage bg-footer text-center align-middle fs-3 text-white">
                     <i class="profileImage"></i>
                 </div>
-               
+
                 <!-- Header -->
                 <div class="header">
                     <a href="Option2">
