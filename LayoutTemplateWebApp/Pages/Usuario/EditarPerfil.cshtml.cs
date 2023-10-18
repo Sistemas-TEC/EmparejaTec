@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace EmparejaTecWebApp.Pages.Usuario
 {
 
-    public class Option2Model : PageModel
+    public class EditarPerfilModel : PageModel
     {
         public void OnGet()
         {
