@@ -134,3 +134,12 @@ function applyHighContrast() {
     }
 
 }
+//MENSAJES COMIENZA AQUI
+function mostrarMensaje(mensaje) {
+var div = document.getElementById("divMensaje");
+    div.innerHTML = mensaje;
+    div.style.display = "block";
+    setTimeout(function () {
+        div.style.display = "none";
+    }, 3000);
+}

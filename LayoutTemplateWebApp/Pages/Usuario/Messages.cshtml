@@ -1,28 +1,101 @@
 ﻿@page
 @model MessagesModel
 @{
+    ViewData["Title"] = "Messages";
 }
-<div class="card border-light w-75 mx-auto position-relative">
-    <div class="container">
-        <div class="row mb-3">
+<div class="card" style="position: fixed; width: 78%; height: 78%;">
 
-            <h1 class="card-title">samurai99 </h1>
-            <a class="list-group-item text-center" href="#">
-                 <span ></span>
-            </a>
-
-            <div class="position-absolute top-50 start-0 translate-middle-y" style="z-index: 1">
-                <!-- Foto de perfil -->
-                <img src="~/images/profile_pic/turtle.png" class="img-fluid rounded-circle" alt="Foto de perfil" width="100" height="20">
+    <div class="card border-1 w-75 mx-auto position-relative" style="border-radius: 20px 20px 0px 0px; position: fixed; width: 78% ;height: 100%; overflow-y: auto;">
+        
+        <li b-fb2uzsacw2="" class="list-group-item d-flex justify-content-between align-items-center clickable chat" style="font-size: 20px; background-color: #E3E0E5">
+            <div b-fb2uzsacw2="" class="profile-pic" style="font-size: 25px;">
+                <img src="/images/profile_pic/boy.png" alt="Profile Picture" class="img-fluid rounded-circle" width="35" style="font-size: 20px;">
             </div>
-            <div class="card-body">
-                <h1 class="card-title">samurai99</h1>
-                <br>
-                <p class="card-text"><small class="text-muted"></small></p>
-                <div class="d-flex justify-content-center">
-                  
-                </div>
+            <div b-fb2uzsacw2="" class="chat-content m-1" style="font-size: 20px;">
+                <h6 b-fb2uzsacw2="" class="mb-1" style="font-size: 20px;">John Doe</h6>
+            </div>
+            <div b-fb2uzsacw2="" class="chat-details text-right" style="font-size: 16px;">
+            </div>
+        </li>
+
+        <div class="card-body">
+            <ul id="chatList"></ul>
+
+        </div>
+
+        <div class="fixed-bottom-container">
+            <div style="display: flex; align-items: center;">
+                <textarea type="text" id="inputMessage" class="form-control" style="flex: 1; border-radius: 20px 20px 20px 20px; padding: 15px" placeholder="Escribe un mensaje..."></textarea>
+                <button onclick="enviarMensaje()" class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-arrow-alt-circle-up"></i>
+                </button>
+
             </div>
         </div>
     </div>
+
 </div>
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+        connection.on("ReceiveMessage", function (usuario, mensaje) {
+            agregarMensaje(usuario, mensaje, false);
+
+            // Desplazar el scroll hacia abajo después de agregar un nuevo mensaje
+            var chatList = document.getElementById("chatList");
+            chatList.scrollTop = chatList.scrollHeight;
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        function enviarMensaje() {
+            var usuario = "samurai99"; // Puedes obtener el nombre del usuario de tu sistema
+            var mensaje = $("#inputMessage").val();
+
+            agregarMensaje(usuario, mensaje, true);
+
+            connection.invoke("SendMessage", usuario, mensaje).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            // Limpiar el textarea después de enviar el mensaje
+            $("#inputMessage").val('');
+        }
+
+        // Evento de teclado para enviar mensaje al presionar Enter
+        $("#inputMessage").on("keydown", function (event) {
+            if (event.key === "Enter") {
+                // Evitar el salto de línea y enviar el mensaje
+                event.preventDefault();
+                enviarMensaje();
+            }
+        });
+
+        function agregarMensaje(usuario, mensaje, esEnviado) {
+            var listItem = document.createElement("li");
+            var messageContainer = document.createElement("div");
+
+            messageContainer.className = "message-container";
+
+            if (esEnviado) {
+                messageContainer.innerHTML = '<div class="sent-message">' + usuario + ': ' + mensaje + '</div>';
+            } else {
+                messageContainer.innerHTML = '<div class="received-message">' + usuario + ': ' + mensaje + '</div>';
+            }
+
+            listItem.appendChild(messageContainer);
+            $("#chatList").append(listItem);
+        }
+    </script>
+}
+
+

@@ -64,7 +64,7 @@ img {
     max-height: 100%;
 }
 
-a:hover{
+a:hover {
     color: var(--colorMain) !important;
 }
 
@@ -110,6 +110,7 @@ a:hover{
     font-weight: lighter;
     border-radius: 5px 5px 5px 5px;
 }
+
 .nav-item-header {
     margin: 5px 20px;
 }
@@ -129,9 +130,9 @@ a:hover{
     background-color: var(--colorMain) !important;
 }
 
-.active-tab:hover {
-    color: white !important;
-}
+    .active-tab:hover {
+        color: white !important;
+    }
 
 .nav-link-header:hover {
     font-weight: 600;
@@ -150,7 +151,7 @@ a:hover{
     }
 
 /* Chats */
-.chat:hover{
+.chat:hover {
     background-color: whitesmoke;
 }
 
@@ -172,55 +173,55 @@ a:hover{
     max-height: 32px;
 }
 
-.notification{
+.notification {
     color: white !important;
 }
 
 /* Buttons */
 
-.btn-primary{
+.btn-primary {
     background-color: var(--colorMain) !important;
     border-color: var(--colorMain) !important;
     color: white !important;
 }
 
-.btn-primary:hover {
-    background-color: white !important;
-    border-color: var(--colorMain) !important;
-    color: var(--colorMain) !important;
-}
+    .btn-primary:hover {
+        background-color: white !important;
+        border-color: var(--colorMain) !important;
+        color: var(--colorMain) !important;
+    }
 
-.btn-primary:focus {
-    box-shadow: 0 0 0 .25rem rgba(110, 62, 255, .5) !important;
-}
+    .btn-primary:focus {
+        box-shadow: 0 0 0 .25rem rgba(110, 62, 255, .5) !important;
+    }
 
 .btn-outline-primary {
     border-color: var(--colorMain) !important;
     color: var(--colorMain) !important;
 }
 
-.btn-outline-primary:hover{
-    background-color: var(--colorMain) !important;
-    border-color: var(--colorMain) !important;
-    color: white !important;
-}
+    .btn-outline-primary:hover {
+        background-color: var(--colorMain) !important;
+        border-color: var(--colorMain) !important;
+        color: white !important;
+    }
 
-.btn-outline-primary:focus {
-    box-shadow: 0 0 0 .25rem rgba(110, 62, 255, .5) !important;
-}
+    .btn-outline-primary:focus {
+        box-shadow: 0 0 0 .25rem rgba(110, 62, 255, .5) !important;
+    }
 
 /* Register Form */
-.register-form{
+.register-form {
     width: 400px;
     margin-top: 500px;
     padding-bottom: 100px
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
-.icon-form{
+.icon-form {
     font-size: 75px;
 }
 
@@ -229,7 +230,7 @@ textarea{
     font-weight: lighter;
 }
 
-.clickable{
+.clickable {
     cursor: pointer;
 }
 
@@ -270,12 +271,8 @@ textarea{
     height: 100%;
 }
 
-/*Messages*/
-.message-container {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
+
+
 
 /*Accesibility CSS*/
 .inverted-colors {
@@ -292,7 +289,6 @@ textarea{
     color: yellow !important; /* Important might be necessary to override other styles */
     background-color: black !important;
 }
-
 
 .yellow-black,
 .yellow-black p,
@@ -363,7 +359,63 @@ textarea{
     -moz-appearance: none; /* Removes styling in Firefox */
     font-size: 20px;
 }
+    .icon-button:focus {
+        box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
+    }
 
+/* Estilo para el contenedor del mensaje */
+.message-container {
+    margin-bottom: 10px;
+    clear: both;
+    overflow: hidden;
+}
+
+/* Estilo para el mensaje recibido */
+.received-message {
+    background-color: #6E3EFF;
+    padding: 10px;
+    border-radius: 30px 25px 25px 0px;
+    color: #FFFFFF;
+    float: left;
+}
+
+/* Estilo para el mensaje enviado */
+.sent-message {
+    background-color: #F0ECFF;
+    color: rgba(var(--colorMainRGB), var(--bs-bg-opacity));
+    padding: 10px;
+    border-radius: 50px 30px 0px 50px;
+    float: right;
+}
+
+/* Define el estilo de la cuadrícula que contendrá el card y el footer */
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr auto; /* Una fila que ocupa todo el espacio disponible y una fila para el footer */
+    height: 100%; /* Altura total de la ventana */
+}
+
+.card-body {
+    height: 300px; /* Altura total de la ventana */
+    max-height: 470px;
+    overflow-y: auto; /* Hace que el card sea desplazable si es necesario */
+}
+
+.fixed-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Ajusta los estilos según tus necesidades */
+.form-control {
+    border-radius: 0;
+}
+
+.input-group-append {
+    border-radius: 0 0 20px 20px;
+}
 .icon-button:focus {
     box-shadow: 0 0 3px 2px rgba(0, 123, 255, .5); /* Adds a custom focus outline (in this case, a blue glow) */
 }
